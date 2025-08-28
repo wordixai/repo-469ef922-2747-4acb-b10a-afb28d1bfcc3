@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowRight, Globe } from 'lucide-react';
+import { ArrowRight, Globe, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const [url, setUrl] = useState('');
