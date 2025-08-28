@@ -2,17 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-   
+    /* Firecrawl Brand Colors */
+    --background-base: 249 249 249;
+    --accent-black: 38 38 38;
+    --accent-white: 255 255 255;
+    --heat-100: 255 77 19;
+    --heat-90: 255 96 38;
+    --heat-12: 255 237 230;
+    
+    /* Alpha variants */
+    --black-alpha-4: 38 38 38 / 0.04;
+    --black-alpha-5: 38 38 38 / 0.05;
+    --black-alpha-7: 38 38 38 / 0.07;
+    --black-alpha-12: 38 38 38 / 0.12;
+    --black-alpha-16: 38 38 38 / 0.16;
+    --black-alpha-20: 38 38 38 / 0.20;
+    --black-alpha-32: 38 38 38 / 0.32;
+    --black-alpha-40: 38 38 38 / 0.40;
+    --black-alpha-48: 38 38 38 / 0.48;
+    --black-alpha-56: 38 38 38 / 0.56;
+    --black-alpha-64: 38 38 38 / 0.64;
+    --black-alpha-72: 38 38 38 / 0.72;
+    --white-alpha-72: 255 255 255 / 0.72;
+    
+    /* Border colors */
+    --border-faint: 232 232 232;
+    --border-muted: 212 212 212;
+    
+    /* Semantic tokens */
+    --background: var(--background-base);
+    --foreground: var(--accent-black);
+    --primary: var(--heat-100);
+    --primary-foreground: var(--accent-white);
+    --secondary: var(--black-alpha-4);
+    --secondary-foreground: var(--accent-black);
+    --accent: var(--black-alpha-4);
+    --accent-foreground: var(--accent-black);
+    --muted: var(--black-alpha-5);
+    --muted-foreground: var(--black-alpha-64);
+    --border: var(--border-faint);
+    --input: var(--border-faint);
+    --ring: var(--heat-100);
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --popover: var(--accent-white);
+    --popover-foreground: var(--accent-black);
+    --card: var(--accent-white);
+    --card-foreground: var(--accent-black);
+    --radius: 0.5rem;
   }
 
   .dark {
-
+    --background: 9 9 11;
+    --foreground: 250 250 250;
   }
 }
 
@@ -20,8 +64,135 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background-color: hsl(var(--background-base));
+    color: hsl(var(--accent-black));
+    overflow-x: clip;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .button-primary {
+    @apply bg-[hsl(var(--heat-100))] text-[hsl(var(--accent-white))] hover:bg-[hsl(var(--heat-90))];
+  }
+  
+  .button-secondary {
+    @apply bg-[hsl(var(--black-alpha-4))] text-[hsl(var(--accent-black))] hover:bg-[hsl(var(--black-alpha-7))];
+  }
+  
+  .button-tertiary {
+    @apply bg-transparent text-[hsl(var(--accent-black))] hover:bg-[hsl(var(--black-alpha-4))];
+  }
+  
+  /* Typography */
+  .text-title-h1 {
+    @apply text-5xl lg:text-6xl font-bold leading-tight;
+  }
+  
+  .text-title-h2 {
+    @apply text-4xl lg:text-5xl font-bold leading-tight;
+  }
+  
+  .text-title-h3 {
+    @apply text-3xl lg:text-4xl font-semibold leading-tight;
+  }
+  
+  .text-label-large {
+    @apply text-lg font-medium;
+  }
+  
+  .text-label-medium {
+    @apply text-base font-medium;
+  }
+  
+  .text-body-large {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .text-body-medium {
+    @apply text-base leading-relaxed;
+  }
+  
+  /* Layout helpers */
+  .container {
+    @apply max-w-7xl mx-auto px-4 lg:px-6;
+  }
+  
+  .grid-border {
+    position: relative;
+  }
+  
+  .grid-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid hsl(var(--border-faint));
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  
+  /* Special effects */
+  .text-heat {
+    color: hsl(var(--heat-100));
+  }
+  
+  .bg-heat {
+    background-color: hsl(var(--heat-100));
+  }
+  
+  .border-heat {
+    border-color: hsl(var(--heat-100));
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Code block styling */
+  .prismjs {
+    @apply font-mono text-sm;
+  }
+  
+  .token.comment {
+    @apply text-[hsl(var(--black-alpha-48))];
+  }
+  
+  .token.string {
+    @apply text-green-600;
+  }
+  
+  .token.keyword {
+    @apply text-blue-600;
+  }
+  
+  .token.punctuation {
+    @apply text-[hsl(var(--accent-black))];
+  }
+  
+  /* Logo cloud animation */
+  .logo-cloud {
+    animation: scroll-left 30s linear infinite;
+  }
+  
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
   }
 }
