@@ -66,7 +66,8 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'4xl': '2rem'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -89,6 +90,42 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			spacing: {
+				'15': '3.75rem',
+				'18': '4.5rem',
+				'22': '5.5rem',
+				'34': '8.5rem',
+				'35': '8.75rem',
+				'36': '9rem',
+				'53': '13.25rem',
+				'58': '14.5rem',
+				'61': '15.25rem',
+				'82': '20.5rem',
+				'86': '21.5rem',
+				'88': '22rem',
+				'90': '22.5rem',
+				'100': '25rem',
+				'104': '26rem',
+				'110': '27.5rem',
+				'180': '45rem'
+			},
+			height: {
+				'47': '11.75rem',
+				'86': '21.5rem',
+				'100': '25rem'
+			},
+			width: {
+				'180': '45rem'
+			},
+			maxWidth: {
+				'58': '14.5rem',
+				'88': '22rem'
+			},
+			minHeight: {
+				'10': '2.5rem',
+				'15': '3.75rem',
+				'20': '5rem'
 			}
 		}
 	},
